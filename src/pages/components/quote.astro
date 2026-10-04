@@ -1,0 +1,26 @@
+---
+import FamilyImage from "../../assets/family.png";
+import HouseKeys from "../../assets/keys.png";
+---
+
+<section class="min-h-[80vh] mt-10 px-5">
+  <h2 class="text-2xl font-medium text-[#b3b3b3]">
+    This is not just about{" "}
+    <span class="font-semibold text-[#5B4F3F]">real estate</span>
+  </h2>
+  <div class="grid grid-cols-2 mt-10 relative">
+    <img src={FamilyImage.src} class="h-64 w-64" alt="family-image" />
+    <img
+      src={HouseKeys.src}
+      alt="house-keys"
+      class="mt-5 h-64 w-64 -right-2 top-10 absolute"
+    />
+  </div>
+  <div class="mt-32 space-y-4">
+    <p class="leading-7">
+      It’s about family. Home. Pure comfort. You’re not just looking for four
+      walls. You’re looking for a place to finally settle in and thrive.
+    </p>
+    <p class="font-semibold text-[#5B4F3F]">That’s what we help you find.</p>
+  </div>
+</section>

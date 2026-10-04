@@ -1,0 +1,39 @@
+---
+import Layout from "./layout.astro";
+import Hero from "./components/hero.astro";
+import Categories from "./components/categories.astro";
+import Testimonials from "./components/testimonials.astro";
+import CtaBanner from "./components/cta.astro";
+import Footer from "./components/footer.astro";
+import Neighborhoods from "./components/neighborhoods.astro";
+import Process from "./components/process.astro";
+import Faq from "./components/faq.astro";
+---
+
+<Layout title="AURA Real Estate | Find What Moves You">
+  <Hero />
+
+  <div class="scroll-slide opacity-0 translate-y-12">
+    <Categories />
+  </div>
+
+  <div class="scroll-slide opacity-0 translate-y-12">
+    <Neighborhoods />
+  </div>
+  <div class="scroll-slide opacity-0 translate-y-12">
+    <Process />
+  </div>
+  <div class="scroll-slide opacity-0 translate-y-12">
+    <Testimonials />
+  </div>
+
+  <div class="scroll-slide opacity-0 translate-y-12">
+    <Faq />
+  </div>
+
+  <div class="scroll-slide opacity-0 translate-y-12">
+    <CtaBanner />
+  </div>
+
+  <Footer />
+</Layout>

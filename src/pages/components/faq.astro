@@ -1,0 +1,49 @@
+---
+import { ChevronDown } from "@lucide/astro";
+
+// src/components/FAQ.astro
+const faqs = [
+  {
+    question: "How do you access off-market properties?",
+    answer:
+      "Through our long-standing relationships with private sellers, localized agent network, and direct client representation, we match buyers with exclusive off-market listings before they reach public databases.",
+  },
+  {
+    question: "What is your typical listing strategy for sellers?",
+    answer:
+      "We pair high-definition media production and targeted digital campaigns with pricing models driven by market analytics to maximize buyer competition and deliver top market value.",
+  },
+  {
+    question: "Do you offer consultations before committing?",
+    answer:
+      "Yes, all initial consultations are complimentary and completely non-binding to ensure our team is the ideal match for your real estate vision.",
+  },
+];
+---
+
+<section class="w-full max-w-4xl mx-auto px-5 sm:px-8 lg:px-12 py-12 sm:py-16 lg:py-24">
+  <div class="mb-10 text-center">
+    <span class="text-xs sm:text-sm font-semibold tracking-widest text-[#a89d8f] uppercase">
+      Got Questions?
+    </span>
+    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 leading-tight mt-1">
+      Frequently Asked <span class="text-[#a89d8f] font-normal">Questions</span>
+    </h2>
+  </div>
+
+  <div class="space-y-4">
+    {faqs.map((faq) => (
+      <details class="group p-6 rounded-2xl bg-gray-50 border border-gray-200/80 [&_summary::-webkit-details-marker]:hidden">
+        <summary class="flex items-center justify-between cursor-pointer font-semibold text-gray-900 text-base sm:text-lg">
+          <span>{faq.question}</span>
+          <span class="ml-4 transition-transform duration-300 group-open:rotate-180 text-[#a89d8f]">
+            <ChevronDown className="w-4 h-4" />
+          </span>
+        </summary>
+        <p class="mt-4 text-sm sm:text-base text-gray-600 leading-relaxed font-light">
+          {faq.answer}
+        </p>
+      </details>
+    ))}
+  </div>
+</section>

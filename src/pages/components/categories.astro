@@ -1,0 +1,87 @@
+---
+import luxuryImg from "../../assets/categories/luxury-redentials.jpeg";
+import urbanImg from "../../assets/categories/urban-apartment.webp";
+import commercialImg from "../../assets/categories/commercial-space.jpeg";
+import landImg from "../../assets/categories/land-development.jpg";
+
+const categories = [
+  {
+    title: "Luxury Residential",
+    description:
+      "Signature villas, penthouses, and single-family estates designed with modern amenities.",
+    idealFor: "Buyers seeking high-end living and refined comfort.",
+    image: luxuryImg,
+  },
+  {
+    title: "Urban Apartments",
+    description:
+      "High-rise condominiums, lofts, and studio apartments situated in high-walkability city centers.",
+    idealFor:
+      "Professionals, first-time buyers, and short-term rental investors.",
+    image: urbanImg,
+  },
+  {
+    title: "Commercial Space",
+    description:
+      "Grade-A office units, retail storefronts, and industrial spaces in high-traffic corridors.",
+    idealFor: "Business owners and institutional portfolio investors.",
+    image: commercialImg,
+  },
+  {
+    title: "Land & Development",
+    description:
+      "Prime development land, agricultural parcels, and custom building plots ready for entitlement.",
+    idealFor: "Developers and long-term land banking strategies.",
+    image: landImg,
+  },
+];
+---
+
+<section class="w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-12 sm:py-16 lg:py-24">
+  <!-- Section Header -->
+  <div class="mb-8 sm:mb-12 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+    <div>
+      <span class="text-xs sm:text-sm font-semibold tracking-widest text-[#5B4F3F] uppercase">
+        Properties
+      </span>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-gray-500 mt-1">
+        Explore By <span class="font-semibold text-[#5B4F3F]">Categories</span>
+      </h2>
+    </div>
+    <p class="text-sm sm:text-base text-gray-600 max-w-md">
+      Find tailored real estate opportunities designed for your lifestyle and
+      investment goals.
+    </p>
+  </div>
+
+  <!-- Category Cards Responsive Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+    {categories.map((item) => (
+      <div class="group relative overflow-hidden rounded-2xl min-h-[280px] sm:min-h-[320px] flex flex-col justify-end p-6 sm:p-8 cursor-pointer shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+        <!-- Background Image with group-hover zoom -->
+        <img
+          src={item.image.src}
+          alt={item.title}
+          class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+        />
+
+        <!-- Dark Gradient Overlay for Text Legibility -->
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/30 transition-opacity duration-300 group-hover:from-black/95 group-hover:via-black/70 group-hover:to-black/40" />
+
+        <!-- Content Layer -->
+        <div class="relative z-10 w-full text-white space-y-3">
+          <h3 class="text-2xl sm:text-3xl font-bold tracking-tight transition-colors duration-200">
+            {item.title}
+          </h3>
+          <p class="text-sm sm:text-base font-normal text-gray-200 leading-relaxed">
+            {item.description}
+          </p>
+          <div class="pt-2 border-t border-white/20 text-xs sm:text-sm text-gray-300">
+            <span class="font-semibold text-white">Ideal for:</span>{" "}
+            <span>{item.idealFor}</span>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,50 @@
+---
+// src/components/Process.astro
+const steps = [
+  {
+    number: "01",
+    title: "Discovery & Strategy",
+    description:
+      "We analyze your lifestyle goals, budget parameters, and timeline to craft a tailored search or listing plan.",
+  },
+  {
+    number: "02",
+    title: "Curated Matching",
+    description:
+      "Gain access to priority listings, private off-market opportunities, and comprehensive neighborhood insights.",
+  },
+  {
+    number: "03",
+    title: "Seamless Closing",
+    description:
+      "From offer negotiation and legal inspections to key handover, our team handles every detail effortlessly.",
+  },
+];
+---
+
+<section class="w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-12 sm:py-16 lg:py-24">
+  <div class="mb-12 text-center max-w-2xl mx-auto">
+    <span class="text-xs sm:text-sm font-semibold tracking-widest text-[#a89d8f] uppercase">
+      How It Works
+    </span>
+    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900 leading-tight mt-1">
+      Your Journey, <span class="text-[#a89d8f] font-normal">Simplified</span>
+    </h2>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+    {steps.map((step) => (
+      <div class="p-8 rounded-3xl bg-gray-50 border border-gray-100 flex flex-col justify-between hover:border-gray-200 transition-all">
+        <div>
+          <span class="text-4xl font-extrabold text-[#a89d8f]/40 block mb-4">
+            {step.number}
+          </span>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">{step.title}</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">
+            {step.description}
+          </p>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,80 @@
+---
+// src/components/Neighborhoods.astro
+const neighborhoods = [
+  {
+    name: "Oakridge Hills",
+    tagline: "Spacious suburban living & top-tier schools",
+    properties: "24 Active Listings",
+    avgPrice: "$1.4M",
+    image:
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    name: "Financial District",
+    tagline: "High-rise luxury condos & penthouses",
+    properties: "18 Active Listings",
+    avgPrice: "$2.1M",
+    image:
+      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    name: "Maplewood Village",
+    tagline: "Historic charm, parks, & walkable downtown",
+    properties: "12 Active Listings",
+    avgPrice: "$980K",
+    image:
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+  },
+];
+---
+
+<section class="w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-12 sm:py-16 lg:py-24">
+  <!-- Section Header -->
+  <div class="mb-10 sm:mb-14 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+    <div class="max-w-xl">
+      <span class="text-xs sm:text-sm font-semibold tracking-widest text-[#a89d8f] uppercase">
+        Explore Neighborhoods
+      </span>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900 leading-tight mt-1">
+        Find Your Ideal{" "}
+        <span class="text-[#a89d8f] font-normal">Community</span>
+      </h2>
+    </div>
+    <p class="text-gray-500 text-sm sm:text-base leading-relaxed max-w-md">
+      Discover distinct character, market trends, and lifestyle benefits across
+      our premier service areas.
+    </p>
+  </div>
+
+  <!-- Cards Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+    {neighborhoods.map((area) => (
+      <div class="group relative rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-end min-h-[380px] sm:min-h-[420px]">
+        <img
+          src={area.image}
+          alt={area.name}
+          class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+
+        <div class="relative z-10 p-6 sm:p-8 text-white">
+          <div class="flex items-center justify-between text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">
+            <span>{area.properties}</span>
+            <span>Avg {area.avgPrice}</span>
+          </div>
+          <h3 class="text-2xl font-bold mb-1">{area.name}</h3>
+          <p class="text-sm text-gray-200 font-light leading-relaxed mb-4">
+            {area.tagline}
+          </p>
+
+          <a
+            href="#contact"
+            class="inline-flex items-center gap-2 text-sm font-semibold text-white group-hover:text-[#a89d8f] transition-colors"
+          >
+            View Community Guide &rarr;
+          </a>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

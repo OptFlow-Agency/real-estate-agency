@@ -1,0 +1,113 @@
+---
+import { Menu, X } from "@lucide/astro";
+
+const navLinks = [
+  { label: "Search", href: "#search" },
+  { label: "Neighborhoods", href: "#neighborhoods" },
+  { label: "Agents", href: "#agents" },
+  { label: "Join", href: "#join" },
+  { label: "Paperwork", href: "#paperwork" },
+  { label: "Resources", href: "#resources" },
+  { label: "About", href: "#about" },
+];
+---
+
+<header class="relative z-50 w-full">
+  <div class="mx-auto flex max-w-7xl items-center justify-between">
+    <a href="/" class="text-2xl font-bold tracking-tight text-white">
+      REA
+    </a>
+
+    <nav class="hidden items-center gap-8 lg:flex">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="text-sm font-medium text-gray-200 transition-colors hover:text-white"
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <button
+      id="menu-open-btn"
+      type="button"
+      class="p-1 text-white lg:hidden"
+      aria-label="Open Navigation Menu"
+    >
+      <Menu class="h-8 w-8 cursor-pointer" />
+    </button>
+  </div>
+
+  <!-- Mobile Overlay Backdrop -->
+  <div
+    id="mobile-backdrop"
+    class="fixed inset-0 z-40 bg-black/60 opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden"
+  ></div>
+
+  <!-- Mobile Menu Drawer -->
+  <div
+    id="mobile-drawer"
+    class="fixed top-0 right-0 z-50 h-full w-4/5 max-w-sm translate-x-full bg-[#111111] p-6 shadow-2xl transition-transform duration-300 ease-in-out lg:hidden"
+  >
+    <!-- Drawer Header -->
+    <div class="flex items-center justify-between border-b border-gray-800 pb-4">
+      <span class="text-xl font-bold text-white">REA</span>
+      <button
+        id="menu-close-btn"
+        type="button"
+        class="p-1 text-gray-400 hover:text-white"
+        aria-label="Close Navigation Menu"
+      >
+        <X class="h-7 w-7 cursor-pointer" />
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Links -->
+    <nav class="mt-8 flex flex-col gap-6">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="text-lg font-medium text-gray-300 transition-colors hover:text-white"
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<script>
+  function setupMobileMenu() {
+    const openBtn = document.getElementById("menu-open-btn");
+    const closeBtn = document.getElementById("menu-close-btn");
+    const backdrop = document.getElementById("mobile-backdrop");
+    const drawer = document.getElementById("mobile-drawer");
+
+    function openMenu() {
+      drawer?.classList.remove("translate-x-full");
+      backdrop?.classList.remove("opacity-0", "pointer-events-none");
+      document.body.style.overflow = "hidden"; // Prevent page scrolling behind drawer
+    }
+
+    function closeMenu() {
+      drawer?.classList.add("translate-x-full");
+      backdrop?.classList.add("opacity-0", "pointer-events-none");
+      document.body.style.overflow = "";
+    }
+
+    openBtn?.addEventListener("click", openMenu);
+    closeBtn?.addEventListener("click", closeMenu);
+    backdrop?.addEventListener("click", closeMenu);
+
+    // Close menu when clicking any nav link
+    drawer?.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+  }
+
+  // Support standard loads & Astro View Transitions
+  document.addEventListener("DOMContentLoaded", setupMobileMenu);
+  document.addEventListener("astro:page-load", setupMobileMenu);
+</script>

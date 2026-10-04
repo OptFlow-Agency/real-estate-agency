@@ -1,0 +1,227 @@
+---
+const exploreLinks = [
+  { label: "Featured Listings", href: "#" },
+  { label: "Off-Market Deals", href: "#" },
+  { label: "Neighborhood Guides", href: "#" },
+];
+
+const servicesLinks = [
+  { label: "Buyer Representation", href: "#" },
+  { label: "Seller Advisory", href: "#" },
+  { label: "Property Valuation", href: "#" },
+  { label: "Commercial Leasing", href: "#" },
+];
+
+const companyLinks = [
+  { label: "About Us", href: "#" },
+  { label: "Our Team", href: "#" },
+];
+---
+
+<footer class="bg-[#111111] text-white pt-16 sm:pt-20 pb-12 px-5 sm:px-8 lg:px-12 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto relative z-10">
+    <!-- Main Content Layout -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 pb-12 border-b border-white/10">
+      <!-- Brand & Navigation Area -->
+      <div class="lg:col-span-8 flex flex-col justify-between">
+        <!-- Brand Title -->
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight mb-8 sm:mb-12">
+          AURA Real Estate Group
+        </h2>
+
+        <!-- Navigation Columns -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-10">
+          <!-- Explore -->
+          <div>
+            <h3 class="font-bold text-sm tracking-wider uppercase mb-4 text-white">
+              Explore
+            </h3>
+            <ul class="space-y-3">
+              {exploreLinks.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    class="text-gray-400 hover:text-white transition-colors text-sm"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Services -->
+          <div>
+            <h3 class="font-bold text-sm tracking-wider uppercase mb-4 text-white">
+              Services
+            </h3>
+            <ul class="space-y-3">
+              {servicesLinks.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    class="text-gray-400 hover:text-white transition-colors text-sm"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Company -->
+          <div>
+            <h3 class="font-bold text-sm tracking-wider uppercase mb-4 text-white">
+              Company
+            </h3>
+            <ul class="space-y-3">
+              {companyLinks.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    class="text-gray-400 hover:text-white transition-colors text-sm"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact & Hours Panel -->
+      <div class="lg:col-span-4 flex flex-col justify-between space-y-6 pt-6 lg:pt-0 lg:border-l lg:border-white/10 lg:pl-12">
+        <div>
+          <h3 class="font-bold text-sm tracking-wider uppercase mb-4 text-white">
+            Contact & Hours
+          </h3>
+          <div class="space-y-2 text-sm text-gray-300 font-medium">
+            <p>100 Financial District Blvd, Suite 400</p>
+            <p>+1 (800) 555-0199</p>
+            <p>
+              <a
+                href="mailto:contact@aurarealestate.com"
+                class="text-gray-300 hover:text-white hover:underline transition-colors"
+              >
+                contact@aurarealestate.com
+              </a>
+            </p>
+            <p class="pt-2 text-sm text-gray-300 leading-relaxed">
+              Mon – Fri: 8:00 AM – 6:00 PM | Sat: By Appointment
+            </p>
+          </div>
+        </div>
+
+        <!-- Social Icons (Original SVG Icons) -->
+        <div>
+          <h4 class="text-xs font-semibold tracking-wider text-gray-400 uppercase mb-3">
+            Connect With Us
+          </h4>
+          <div class="flex items-center gap-4 text-gray-300">
+            <!-- Instagram -->
+            <a
+              href="#"
+              aria-label="Instagram"
+              class="p-2.5 rounded-full border border-white/10 hover:border-white/30 hover:text-white transition-all duration-200"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <rect
+                  x="2"
+                  y="2"
+                  width="20"
+                  height="20"
+                  rx="5"
+                  ry="5"
+                  stroke-width="2"
+                ></rect>
+                <path
+                  d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"
+                  stroke-width="2"
+                ></path>
+                <line
+                  x1="17.5"
+                  y1="6.5"
+                  x2="17.51"
+                  y2="6.5"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                ></line>
+              </svg>
+            </a>
+
+            <!-- Facebook -->
+            <a
+              href="#"
+              aria-label="Facebook"
+              class="p-2.5 rounded-full border border-white/10 hover:border-white/30 hover:text-white transition-all duration-200"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </svg>
+            </a>
+
+            <!-- LinkedIn -->
+            <a
+              href="#"
+              aria-label="LinkedIn"
+              class="p-2.5 rounded-full border border-white/10 hover:border-white/30 hover:text-white transition-all duration-200"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+                <rect x="2" y="9" width="4" height="12" stroke-width="2"></rect>
+                <circle cx="4" cy="4" r="2" stroke-width="2"></circle>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Copyright Bar -->
+    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+      <p>
+        © {new Date().getFullYear()} AURA Real Estate Group. All rights
+        reserved.
+      </p>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-gray-400 transition-colors">
+          Privacy Policy
+        </a>
+        <a href="#" class="hover:text-gray-400 transition-colors">
+          Terms of Service
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Faded Background Watermark Text -->
+  <div class="absolute bottom-0 right-0 left-0 text-center pointer-events-none select-none text-[18vw] font-extrabold text-white/[0.02] leading-none -mb-8 sm:-mb-16">
+    AREG
+  </div>
+</footer>

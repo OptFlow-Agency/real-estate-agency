@@ -1,0 +1,161 @@
+---
+import { ChevronLeft, ChevronRight } from "@lucide/astro";
+
+const testimonials = [
+  {
+    quote:
+      "We were desperately outgrowing our two-bedroom condo, but the market felt overwhelming. They listened to exactly what our kids needed a quiet backyard, great school district, and zero stressful surprises. We finally have room to breathe.",
+    author: "Marcus & Elena Vance",
+    details: "Purchased a 4-bed suburban home in Oakridge",
+    bgColor: "bg-[#655b4f]",
+  },
+  {
+    quote:
+      "As first-time buyers, we were terrified of making a mistake. The team treated us like family, guided us through every single detail, and found us a charming home that felt instantly ours the moment we walked through the door.",
+    author: "Sarah & David Miller",
+    details: "Purchased their first craftsman home in Maplewood",
+    bgColor: "bg-[#6c6b6b]",
+  },
+  {
+    quote:
+      "Downsizing after 30 years felt like letting go of a lifetime of memories. They helped us navigate every step with care, finding us a cozy, light-filled condo near our grandchildren that truly feels like home.",
+    author: "Robert & Claire Sterling",
+    details: "Purchased a luxury condo in Riverside",
+    bgColor: "bg-[#58534e]",
+  },
+];
+
+// Duplicate items to support smooth infinite loop scrolling
+const infiniteTestimonials = [
+  ...testimonials,
+  ...testimonials,
+  ...testimonials,
+];
+---
+
+<section class="w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-12 sm:py-16 lg:py-24">
+  <!-- Section Header -->
+  <div class="mb-8 sm:mb-12 flex flex-col sm:flex-row sm:items-end justify-between gap-6">
+    <div class="max-w-xl">
+      <span class="text-xs sm:text-sm font-semibold tracking-widest text-[#a89d8f] uppercase">
+        Testimonials
+      </span>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900 leading-tight mt-1">
+        Stories of{" "}
+        <span class="text-[#a89d8f] font-normal">
+          Home &<br class="hidden sm:inline" /> Belonging
+        </span>
+      </h2>
+    </div>
+
+    <!-- Right Header Area: Description & Desktop Chevron Controls -->
+    <div class="flex flex-col sm:items-end gap-6">
+      <p class="text-gray-500 text-sm sm:text-base leading-relaxed max-w-md text-left sm:text-right">
+        See how families found their quiet retreat, extra breathing room, and
+        forever homes with us.
+      </p>
+
+      <!-- Desktop Chevron Buttons Aligned with Title Area -->
+      <div class="hidden sm:flex items-center gap-3">
+        <button
+          id="prevBtn"
+          aria-label="Previous Testimonial"
+          class="p-3 rounded-full border border-gray-300 bg-white text-gray-700 hover:bg-gray-100 active:scale-95 transition-all shadow-sm"
+        >
+          <ChevronLeft class="w-5 h-5" />
+        </button>
+        <button
+          id="nextBtn"
+          aria-label="Next Testimonial"
+          class="p-3 rounded-full border border-gray-300 bg-white text-gray-700 hover:bg-gray-100 active:scale-95 transition-all shadow-sm"
+        >
+          <ChevronRight class="w-5 h-5" />
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Horizontal Infinite Scroll Container -->
+  <div
+    id="testimonialTrack"
+    class="flex gap-6 sm:gap-8 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-none scroll-smooth"
+  >
+    {infiniteTestimonials.map((item) => (
+      <div
+        class={`flex-none w-[85vw] sm:w-[380px] lg:w-[420px] p-6 sm:p-8 rounded-3xl ${item.bgColor} text-white flex flex-col justify-between snap-start shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1`}
+      >
+        <!-- Quote Text -->
+        <p class="text-sm sm:text-base font-light leading-relaxed mb-8 text-gray-100">
+          "{item.quote}"
+        </p>
+
+        <!-- Author Details -->
+        <div class="pt-4 border-t border-white/10">
+          <p class="text-sm sm:text-base font-semibold leading-snug">
+            {item.author}
+          </p>
+          <p class="text-xs sm:text-sm font-light text-gray-300 mt-1">
+            {item.details}
+          </p>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<script>
+  const track = document.getElementById("testimonialTrack");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+
+  if (track && prevBtn && nextBtn) {
+    const cardWidth = () => {
+      const firstCard = track.querySelector("div") as HTMLElement;
+      const style = window.getComputedStyle(track);
+      const gap = parseFloat(style.gap) || 24;
+      return (firstCard?.offsetWidth || 380) + gap;
+    };
+
+    // Scroll Next
+    nextBtn.addEventListener("click", () => {
+      track.scrollBy({ left: cardWidth(), behavior: "smooth" });
+    });
+
+    // Scroll Previous
+    prevBtn.addEventListener("click", () => {
+      track.scrollBy({ left: -cardWidth(), behavior: "smooth" });
+    });
+
+    // Infinite Loop Adjustment
+    track.addEventListener("scroll", () => {
+      const maxScroll = track.scrollWidth - track.clientWidth;
+
+      // If reached near the right end, jump seamlessly to the middle duplicate set
+      if (track.scrollLeft >= maxScroll - 50) {
+        track.scrollLeft = track.scrollWidth / 3;
+      }
+
+      // If reached near the beginning, jump seamlessly to the middle duplicate set
+      if (track.scrollLeft <= 50) {
+        track.scrollLeft = track.scrollWidth / 3;
+      }
+    });
+
+    // Initial position set to the middle set on load
+    window.addEventListener("DOMContentLoaded", () => {
+      track.scrollLeft = track.scrollWidth / 3;
+    });
+  }
+</script>
+
+<style>
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .scrollbar-none {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+</style>
